@@ -37,10 +37,68 @@ fork_fig = {'categories': [{'alias': 'burgers', 'title': 'Burgers'},
  'url': 'https://www.yelp.com/biz/fork-and-fig-albuquerque?adjust_creative=SYc8R4Gowqru5h4SBKZXsQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=SYc8R4Gowqru5h4SBKZXsQ'}
 ```
 
+
+```python
+# __SOLUTION__ 
+fork_fig = {'categories': [{'alias': 'burgers', 'title': 'Burgers'},
+  {'alias': 'sandwiches', 'title': 'Sandwiches'},
+  {'alias': 'salad', 'title': 'Salad'}],
+ 'coordinates': {'latitude': 35.10871, 'longitude': -106.56739},
+ 'display_phone': '(505) 881-5293',
+ 'distance': 3571.724649307866,
+ 'id': 'fork-and-fig-albuquerque',
+ 'image_url': 'https://s3-media1.fl.yelpcdn.com/bphoto/_-DpXKfS3jv6DyA47g6Fxg/o.jpg',
+ 'is_closed': False,
+ 'location': {'address1': '6904 Menaul Blvd NE',
+  'address2': 'Ste C',
+  'address3': '',
+  'city': 'Albuquerque',
+  'country': 'US',
+  'display_address': ['6904 Menaul Blvd NE', 'Ste C', 'Albuquerque, NM 87110'],
+  'state': 'NM',
+  'zip_code': '87110'},
+ 'name': 'Fork & Fig',
+ 'phone': '+15058815293',
+ 'price': '$$',
+ 'rating': 4.5,
+ 'review_count': 604,
+ 'transactions': [],
+ 'url': 'https://www.yelp.com/biz/fork-and-fig-albuquerque?adjust_creative=SYc8R4Gowqru5h4SBKZXsQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=SYc8R4Gowqru5h4SBKZXsQ'}
+```
+
 And here is the data representing Frontier Restaurant.
 
 
 ```python
+frontier_restaurant = {'categories': [{'alias': 'mexican', 'title': 'Mexican'},
+  {'alias': 'diners', 'title': 'Diners'},
+  {'alias': 'tradamerican', 'title': 'American (Traditional)'}],
+ 'coordinates': {'latitude': 35.0808088832532, 'longitude': -106.619402244687},
+ 'display_phone': '(505) 266-0550',
+ 'distance': 4033.6583235266075,
+ 'id': 'frontier-restaurant-albuquerque-2',
+ 'image_url': 'https://s3-media4.fl.yelpcdn.com/bphoto/M9L2z6-G0NobuDJ6YTh6VA/o.jpg',
+ 'is_closed': True,
+ 'location': {'address1': '2400 Central Ave SE',
+  'address2': '',
+  'address3': '',
+  'city': 'Albuquerque',
+  'country': 'US',
+  'display_address': ['2400 Central Ave SE', 'Albuquerque, NM 87106'],
+  'state': 'NM',
+  'zip_code': '87106'},
+ 'name': 'Frontier Restaurant',
+ 'phone': '+15052660550',
+ 'price': '$',
+ 'rating': 4.0,
+ 'review_count': 1369,
+ 'transactions': [],
+ 'url': 'https://www.yelp.com/biz/frontier-restaurant-albuquerque-2?adjust_creative=SYc8R4Gowqru5h4SBKZXsQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=SYc8R4Gowqru5h4SBKZXsQ'}
+```
+
+
+```python
+# __SOLUTION__ 
 frontier_restaurant = {'categories': [{'alias': 'mexican', 'title': 'Mexican'},
   {'alias': 'diners', 'title': 'Diners'},
   {'alias': 'tradamerican', 'title': 'American (Traditional)'}],
@@ -81,6 +139,19 @@ fork_fig.keys()
 
 
 
+
+```python
+# __SOLUTION__ 
+fork_fig.keys()
+```
+
+
+
+
+    dict_keys(['categories', 'coordinates', 'display_phone', 'distance', 'id', 'image_url', 'is_closed', 'location', 'name', 'phone', 'price', 'rating', 'review_count', 'transactions', 'url'])
+
+
+
 ### Writing functions with conditionals
 
 Let's write a function called `better_restaurant` that provided two restaurants, returns the restaurant with the better rating.  The first argument is `restaurant` and the second argument is `alternative`.  
@@ -93,9 +164,29 @@ def better_restaurant(restaurant, alternative):
 
 
 ```python
+# __SOLUTION__ 
+def better_restaurant(restaurant, alternative):
+    if restaurant['rating'] > alternative['rating']:
+        return restaurant
+    return alternative
+```
+
+
+```python
 print(better_restaurant(frontier_restaurant, fork_fig)['name']) # 'Fork & Fig'
 print(better_restaurant(fork_fig, frontier_restaurant)['name']) # 'Fork & Fig'
 ```
+
+
+```python
+# __SOLUTION__ 
+print(better_restaurant(frontier_restaurant, fork_fig)['name']) # 'Fork & Fig'
+print(better_restaurant(fork_fig, frontier_restaurant)['name']) # 'Fork & Fig'
+```
+
+    Fork & Fig
+    Fork & Fig
+
 
 Let's write a function called `cheaper_restaurant` that returns the restaurant with the lower price, that is the restaurant that has fewer `'$'` signs.  The first argument should be named `restaurant` and the second argument should be named `alternative`.
 
@@ -107,9 +198,31 @@ def cheaper_restaurant(restaurant, alternative):
 
 
 ```python
+# __SOLUTION__ 
+def cheaper_restaurant(restaurant, alternative):
+    if len(restaurant['price']) < len(alternative['price']):
+        return restaurant
+    if len(restaurant['price']) > len(alternative['price']):
+        return alternative
+    return "Restaurants are the same price!"
+```
+
+
+```python
 print(cheaper_restaurant(fork_fig, frontier_restaurant)['name']) # 'Frontier Restaurant'
 print(cheaper_restaurant(frontier_restaurant, fork_fig)['name']) # 'Frontier Restaurant'
 ```
+
+
+```python
+# __SOLUTION__ 
+print(cheaper_restaurant(fork_fig, frontier_restaurant)['name']) # 'Frontier Restaurant'
+print(cheaper_restaurant(frontier_restaurant, fork_fig)['name']) # 'Frontier Restaurant'
+```
+
+    Frontier Restaurant
+    Frontier Restaurant
+
 
 ### Conditionals and Loops
 
@@ -122,11 +235,43 @@ fork_fig['is_closed'] # False
 
 
 ```python
+# __SOLUTION__ 
+fork_fig['is_closed'] # False
+```
+
+
+
+
+    False
+
+
+
+
+```python
 frontier_restaurant['is_closed'] # True
 ```
 
 
 ```python
+# __SOLUTION__ 
+frontier_restaurant['is_closed'] # True
+```
+
+
+
+
+    True
+
+
+
+
+```python
+restaurants = [fork_fig, frontier_restaurant]
+```
+
+
+```python
+# __SOLUTION__ 
 restaurants = [fork_fig, frontier_restaurant]
 ```
 
@@ -138,13 +283,50 @@ def open_restaurants(restaurants):
 
 
 ```python
+# __SOLUTION__ 
+def open_restaurants(restaurants):
+    open = []
+    for restaurant in restaurants:
+        if not restaurant['is_closed']:
+            open.append(restaurant)
+    return open
+```
+
+
+```python
 len(open_restaurants(restaurants)) # 1
 ```
 
 
 ```python
+# __SOLUTION__ 
+len(open_restaurants(restaurants)) # 1
+```
+
+
+
+
+    1
+
+
+
+
+```python
 open_restaurants(restaurants)[0]['name'] # 'Fork & Fig'
 ```
+
+
+```python
+# __SOLUTION__ 
+open_restaurants(restaurants)[0]['name'] # 'Fork & Fig'
+```
+
+
+
+
+    'Fork & Fig'
+
+
 
 ### Summary
 
