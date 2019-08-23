@@ -127,7 +127,7 @@ print(cheaper_restaurant(frontier_restaurant, fork_fig)['name']) # 'Frontier Res
 
 ### Conditionals and Loops
 
-Let's continue our work of conditionals by seeing how they can be combined with loops. Let's write a function called `open_restaurants` that takes in a list of restaurants as an argument and returns a list of only the restaurants that are not closed.
+Let's continue our work on conditionals by seeing how they can be combined with loops. Let's write a function called `open_restaurants` that takes in a list of restaurants as an argument and returns a list of only the restaurants that are not closed.
 
 
 ```python
