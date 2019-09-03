@@ -133,13 +133,6 @@ fork_fig.keys()
 ```
 
 
-
-
-    dict_keys(['categories', 'coordinates', 'display_phone', 'distance', 'id', 'image_url', 'is_closed', 'location', 'name', 'phone', 'price', 'rating', 'review_count', 'transactions', 'url'])
-
-
-
-
 ```python
 # __SOLUTION__ 
 fork_fig.keys()
@@ -202,9 +195,7 @@ def cheaper_restaurant(restaurant, alternative):
 def cheaper_restaurant(restaurant, alternative):
     if len(restaurant['price']) < len(alternative['price']):
         return restaurant
-    if len(restaurant['price']) > len(alternative['price']):
-        return alternative
-    return "Restaurants are the same price!"
+    return alternative
 ```
 
 
