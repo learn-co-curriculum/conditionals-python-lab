@@ -74,13 +74,6 @@ And once again, the attributes of the dictionaries above look like the following
 fork_fig.keys()
 ```
 
-
-
-
-    dict_keys(['categories', 'coordinates', 'display_phone', 'distance', 'id', 'image_url', 'is_closed', 'location', 'name', 'phone', 'price', 'rating', 'review_count', 'transactions', 'url'])
-
-
-
 ### Writing functions with conditionals
 
 Let's write a function called `better_restaurant` that provided two restaurants, returns the restaurant with the better rating.  The first argument is `restaurant` and the second argument is `alternative`.  
