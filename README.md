@@ -110,9 +110,7 @@ Let's write a function called `cheaper_restaurant` that returns the restaurant w
 def cheaper_restaurant(restaurant, alternative):
     if len(restaurant['price']) < len(alternative['price']):
         return restaurant
-    if len(restaurant['price']) > len(alternative['price']):
-        return alternative
-    return "Restaurants are the same price!"
+    return alternative
 ```
 
 
